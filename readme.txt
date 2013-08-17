@@ -1,7 +1,7 @@
 === PixGridder ===
 Contributors: manuelmasia
 Donate link: http://www.pixedelic.com/plugins/pixgridder
-Tags: grid, layout, drag & drop, responsive, columns, page builder, grid builder, effects
+Tags: grid, layout, drag & drop, responsive, columns, page builder, grid builder, effects, page builder, page composer
 Requires at least: 3.5.0
 Tested up to: 3.5.2
 Stable tag: trunk
@@ -67,7 +67,7 @@ However, if you want to remove any trace of the plugin from the source code, you
 == Changelog ==
 
 = 1.0.0 =
-* 2013.07.22 - First release
+* 2013.08.17 - First release
 
 == Upgrade Notice ==
 
