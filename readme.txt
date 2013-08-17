@@ -8,7 +8,7 @@ Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A simple page grid composer that splits your pages into ordered grids, with rows and columns
+A simple page grid composer that splits your pages into ordered grids, a builder for rows and columns
 
 == Description ==
 
