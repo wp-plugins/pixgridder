@@ -16,15 +16,15 @@ Here is the demo page: [PixGridder](http://www.pixedelic.com/plugins/pixgridder 
 
 I prefer to define this plugin as a **“grid builder”** instead of a page builder, because a page builder is commonly intended as a tool that allows to create sections and, usually, comes with shortcodes such as tabs, accordions, particular sections, galleries etc… And, in many cases, all these shortcodes are not compatible with other similar plugins you could prefer to use.
 
-**PixGridder** is instead very simple, because it only allows to split your page in rows and columns, simply **by moving the functions** available on your tinyMCE editor from the whole page to each column you decide to split your page in. In this way you can use the plugins you prefer with the shortcodes you prefer (and also the buttons available on your tinyMCE editor) since the editor it is **exactly the same one** you would have without using PixGridder.
+**PixGridder** is instead very simple, because it only allows to split your page into rows and columns **by moving the functions** available on your tinyMCE editor from the whole page to each column you decide to split your page into. In this way you can use the plugins you prefer with the shortcodes you prefer (and also the buttons available on your tinyMCE editor) since the editor is **exactly the same one** you would have without using PixGridder.
 
 = How it works =
 
-**PixGridder** doesn’t generate shortcodes, it only puts into your posts and pages some html comments like this one: `<!--pixgridder:row[cols=3]-->`
+**PixGridder** doesn’t generate shortcodes, it only puts into your posts and pages some html comments like this: `<!--pixgridder:row[cols=3]-->`
 
-They’re **invisible except through the source code**. So if you want to disable the plugin you don’t have to worry about a lot of strange and unuseful shortcodes across your content because everything will stay hidden to the search engine robots too.
+They’re **invisible except through the source code**. So if you want to disable the plugin you don’t have to worry about a lot of strange and unuseful shortcodes across your content because everything will be hidden for both the users and the search engine robots.
 
-However, if you want to remove any trace of the plugin from the source code, you can do it by enabling the **“no trace”** option: you'll get rid of all the comments, but you’ll keep unaltered your content.
+However, if you want to remove any trace of the plugin from the source code of a page, you can do it by enabling the **“no trace”** option: you'll get rid of all the HTML comments, but you’ll keep unaltered your content.
 
 == Installation ==
 
