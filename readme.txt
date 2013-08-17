@@ -26,7 +26,7 @@ They’re **invisible except through the source code**. So if you want to disabl
 
 However, if you want to remove any trace of the plugin from the source code of a page, you can do it by enabling the **“no trace”** option: you'll get rid of all the HTML comments, but you’ll keep unaltered your content.
 
-= Page builder legend (take a look to the 2nd screenshot) =
+= Page builder legend (take a look to the [2nd screenshot](http://wordpress.org/plugins/pixgridder/screenshots/ "PixGridder legend")) =
 1. **title** and **version** of the installed plugin
 2. **Preview tab**: by clicking it you will see the live site with a preview of the changes, not editable from the preview visual itself
 3. **Builder tab**: where you can edit your page/post by using the grid builder
