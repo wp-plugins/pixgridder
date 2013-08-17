@@ -12,6 +12,8 @@ A simple page grid composer that splits your pages into ordered grids, a builder
 
 == Description ==
 
+Here is the demo page: [PixGridder](http://www.pixedelic.com/plugins/pixgridder "PixGridder")
+
 I prefer to define this plugin as a **“grid builder”** instead of a page builder, because a page builder is commonly intended as a tool that allows to create sections and, usually, comes with shortcodes such as tabs, accordions, particular sections, galleries etc… And, in many cases, all these shortcodes are not compatible with other similar plugins you could prefer to use.
 
 **PixGridder** is instead very simple, because it only allows to split your page in rows and columns, simply **by moving the functions** available on your tinyMCE editor from the whole page to each column you decide to split your page in. In this way you can use the plugins you prefer with the shortcodes you prefer (and also the buttons available on your tinyMCE editor) since the editor it is **exactly the same one** you would have without using PixGridder.
