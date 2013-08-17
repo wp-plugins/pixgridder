@@ -26,22 +26,7 @@ They’re **invisible except through the source code**. So if you want to disabl
 
 However, if you want to remove any trace of the plugin from the source code of a page, you can do it by enabling the **“no trace”** option: you'll get rid of all the HTML comments, but you’ll keep unaltered your content.
 
-== Installation ==
-
-1. Upload `pixgridder` to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Enter a page backend and enjoy it
-
-== Frequently Asked Questions ==
-
-= No questions available =
-
-...
-
-== Screenshots ==
-
-1. Pixgridder output demo
-2. Pixgridder UI (2)
+= Page builder legend (take a look to the 2nd screenshot) =
 1. **title** and **version** of the installed plugin
 2. **Preview tab**: by clicking it you will see the live site with a preview of the changes, not editable from the preview visual itself
 3. **Builder tab**: where you can edit your page/post by using the grid builder
@@ -63,6 +48,23 @@ However, if you want to remove any trace of the plugin from the source code of a
 19. **delete**: remove the column
 20. **"Disable the grid builder"**: tick the checkbox and update the page → now the page is editable without using the grid builder, but the frontend still displays columns and rows, so pay attention to not remove any html comment or you risk to break the layout
 21. **"Remove any trace of PixGridder from this page"**: tick the checkbox and update the page → all the row and the columns will be removed but without touching the content, still available both on the frontend and on the editor
+
+== Installation ==
+
+1. Upload `pixgridder` to the `/wp-content/plugins/` directory
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Enter a page backend and enjoy it
+
+== Frequently Asked Questions ==
+
+= No questions available =
+
+...
+
+== Screenshots ==
+
+1. Pixgridder output demo
+2. Pixgridder UI - take a look to the description tab (2)
 
 == Changelog ==
 
