@@ -7,6 +7,7 @@ Version: 1.0.0
 Author: Manuel Masia | Pixedelic.com
 Author URI: http://www.pixedelic.com
 License: GPL2
+Pro version URI: http://codecanyon.net/item/pixgridder-pro-page-grid-composer-for-wordpress/5251972
 */
 
 define( 'PIXGRIDDER_PATH', plugin_dir_path( __FILE__ ) );
