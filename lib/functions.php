@@ -3,11 +3,11 @@
 class PixGridder{
 
 	/**
-	 * @since   1.0.0
+	 * @since   1.0.1
 	 *
 	 * @var     string
 	 */
-	protected $version = '1.0.0';
+	protected $version = '1.0.1';
 
 	/**
 	 * @since    1.0.0
@@ -30,6 +30,9 @@ class PixGridder{
 	 */
 	protected static $instance = null;
 
+	/**
+	 * @since     1.0.1
+	 */
 	public function __construct() {
 		add_action( 'init', array( &$this, 'load_plugin_textdomain' ) );
 		add_action( 'admin_enqueue_scripts', array( &$this, 'admin_styles' ) );
@@ -45,7 +48,7 @@ class PixGridder{
 
 		add_action( 'wp_enqueue_scripts', array( &$this, 'front_styles' ) );
 		add_filter( 'body_class', array( &$this, 'body_class' ) );
-		add_filter( 'the_content', array( &$this, 'filter_content' ), 100 );
+		add_filter( 'the_content', array( &$this, 'filter_content' ), 10 );
     }
 
 	/**
