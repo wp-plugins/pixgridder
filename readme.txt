@@ -70,6 +70,8 @@ Take a look to the [2nd screenshot](http://s.wordpress.org/plugins/pixgridder/sc
 
 == Changelog ==
 
+= 1.1.0 =
+* 2013.09.24 - Changed how the tinyMCE is included in dialog boxes
 = 1.0.1 =
 * 2013.09.21 - Changed priority to the filter for the_content()
 = 1.0.0 =
@@ -77,5 +79,5 @@ Take a look to the [2nd screenshot](http://s.wordpress.org/plugins/pixgridder/sc
 
 == Upgrade Notice ==
 
-= 1.0.1 =
-It fixes issues with some plugins that use empty paragraphs
+= 1.1.0 =
+It should avoid issues if another shortcode editor use "#content" instead of getting the active editor id

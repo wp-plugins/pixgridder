@@ -252,6 +252,22 @@ a, button, input {
 .pix_body_builder #content_toolbargroup {
 	height: 43px;
 }
+.pix_body_builder #textarea_builder #wp-content-editor-container, 
+.pix_body_builder #textarea_builder #post-status-info,
+.pix_body_builder #textarea_builder #wp-content-editor-tools #content-html,
+.pix_body_builder #textarea_builder #wp-content-editor-tools #content-tmce,
+.pix_body_builder #textarea_builder #wp-content-media-buttons,
+.pix_body_builder #textarea_builder #content_toolbargroup > span {
+	display: block;
+}
+#textarea_builder #wp-content-editor-tools #pix-content-builder,
+#textarea_builder #wp-content-editor-tools #pix-content-preview,
+#textarea_builder #pix-builder-editor-container {
+	display: none;
+}
+.pix_body_builder #textarea_builder #content_toolbargroup {
+	height: auto;
+}
 .builder-active .switch-builder,
 .preview-active .switch-preview {
 	border-color: #d1d1d1 #d1d1d1 #f4f4f4;
