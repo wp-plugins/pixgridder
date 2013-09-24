@@ -20,11 +20,11 @@ I prefer to define this plugin as a **â€œgrid builderâ€** instead of a 
 
 = How it works =
 
-**PixGridder** doesnâ€™t generate shortcodes, it only puts into your posts and pages some html comments like this: `<!--pixgridder:row[cols=3]-->`
+**PixGridder** doesn't generate shortcodes, it only puts into your posts and pages some html comments like this: `<!--pixgridder:row[cols=3]-->`
 
-Theyâ€™re **invisible except through the source code**. So if you want to disable the plugin you donâ€™t have to worry about a lot of strange and unuseful shortcodes across your content because everything will be hidden for both the users and the search engine robots.
+They're **invisible except through the source code**. So if you want to disable the plugin you don't have to worry about a lot of strange and unuseful shortcodes across your content because everything will be hidden for both the users and the search engine robots.
 
-However, if you want to remove any trace of the plugin from the source code of a page, you can do it by enabling the **â€œno traceâ€** option: you'll get rid of all the HTML comments, but youâ€™ll keep unaltered your content.
+However, if you want to remove any trace of the plugin from the source code of a page, you can do it by enabling the **â€œno traceâ€** option: you'll get rid of all the HTML comments, but you'll keep unaltered your content.
 
 = Page builder visual description =
 Take a look to the [2nd screenshot](http://s.wordpress.org/plugins/pixgridder/screenshot-2.jpg)
