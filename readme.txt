@@ -14,7 +14,7 @@ A simple page grid composer that splits your pages into ordered grids, a builder
 
 Here is the demo page: [PixGridder](http://www.pixedelic.com/plugins/pixgridder "PixGridder")
 
-I prefer to define this plugin as a **â€œgrid builderâ€** instead of a page builder, because a page builder is commonly intended as a tool that allows to create sections and, usually, comes with shortcodes such as tabs, accordions, particular sections, galleries etcâ€¦ And, in many cases, all these shortcodes are not compatible with other similar plugins you could prefer to use.
+I prefer to define this plugin as a **"grid builder"** instead of a page builder, because a page builder is commonly intended as a tool that allows to create sections and, usually, comes with shortcodes such as tabs, accordions, particular sections, galleries etc... And, in many cases, all these shortcodes are not compatible with other similar plugins you could prefer to use.
 
 **PixGridder** is instead very simple, because it only allows to split your page into rows and columns **by moving the functions** available on your tinyMCE editor from the whole page to each column you decide to split your page into. In this way you can use the plugins you prefer with the shortcodes you prefer (and also the buttons available on your tinyMCE editor) since the editor is **exactly the same one** you would have without using PixGridder.
 
@@ -24,7 +24,7 @@ I prefer to define this plugin as a **â€œgrid builderâ€** instead of a 
 
 They're **invisible except through the source code**. So if you want to disable the plugin you don't have to worry about a lot of strange and unuseful shortcodes across your content because everything will be hidden for both the users and the search engine robots.
 
-However, if you want to remove any trace of the plugin from the source code of a page, you can do it by enabling the **â€œno traceâ€** option: you'll get rid of all the HTML comments, but you'll keep unaltered your content.
+However, if you want to remove any trace of the plugin from the source code of a page, you can do it by enabling the **"no trace"** option: you'll get rid of all the HTML comments, but you'll keep unaltered your content.
 
 = Page builder visual description =
 Take a look to the [2nd screenshot](http://s.wordpress.org/plugins/pixgridder/screenshot-2.jpg)
