@@ -467,9 +467,7 @@ class PixGridder{
 
 		$options = array (
 			array( "id" => "pixgridder_height_preview",
-				"std" => "550"),
-			array( "id" => "pixgridder_test_hook",
-				"std" => "true")
+				"std" => "550")
 		);
 		
 		return $options;
