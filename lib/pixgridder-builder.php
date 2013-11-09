@@ -133,7 +133,7 @@
 
 
 <div id="textarea_builder" style="width:80%;">
-    <?php //wp_editor( '','content'); ?> 
+    <?php wp_editor( '','textArea'); ?> 
 </div>
 
 <div id="pix_builder_id_fields">

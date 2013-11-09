@@ -6,8 +6,8 @@ jQuery.noConflict();
 *
 ********************************/
 function getSelValue(){
-    jQuery('#pix_builder_canvas select').off('change');
-    jQuery('#pix_builder_canvas select').on('change',function(){
+    jQuery('#pix_builder_canvas select, #pix_builder_id_fields select').off('change');
+    jQuery('#pix_builder_canvas select, #pix_builder_id_fields select').on('change',function(){
         var tx = jQuery('option:selected',this).text();
         if ( !jQuery(this).parents('span').eq(0).find('.appended').length ) {
 			jQuery(this).parents('span').eq(0).prepend('<span class="appended" />');
@@ -170,7 +170,7 @@ function pageBuilder(){
 		wrap.removeClass('builder-active').addClass('preview-active');
 		localStorage.setItem('pix_editor_tab', 'pix_preview');
 		if ( jQuery('#auto_draft').val() == '1' && notSaved ) {
-			autosaveDelayPreview = true;
+			//autosaveDelayPreview = true;
 			autosave();
 			return false;
 		}
@@ -211,18 +211,14 @@ function pageBuilder(){
 	jQuery(document).off('click',"#pix_builder_canvas .pix_column_edit");
 	jQuery(document).on('click',"#pix_builder_canvas .pix_column_edit",function(){
 		if ( typeof tinyMCE!=='undefined' ) {
-			tinyMCE.execCommand('mceRemoveControl',false,'content');
+			tinyMCE.execCommand('mceRemoveControl',false,'textArea');
 		}
 		var t = jQuery(this).parents('.pix_builder_column').eq(0),
 			textA = jQuery('textarea',t),
 			textCont = jQuery('.pix_builder_content',t),
 			htmlThis = textA.val(),
 			h = jQuery(window).height(),
-			edit = jQuery('#wp-content-wrap'),
-			cloneEdit = edit.clone();
-		cloneEdit.find('#content').remove();
-		edit.after(cloneEdit);
-		var div = jQuery('#textarea_builder').append(edit),
+			div = jQuery('#textarea_builder'),
 			dataCol = t.attr('data-col');
 			dataCols = t.parents('.pix_section_builder').eq(0).attr('data-cols');
 		htmlThis = htmlThis.replace(/<p><\/p>/g,'');
@@ -258,21 +254,21 @@ function pageBuilder(){
 					zIndex: 49
 				});
 				if ( typeof tinyMCE!=='undefined' ) {
-					tinyMCE.execCommand('mceAddControl',false,'content');
-					tinyMCE.execCommand('mceFocus',false,'content');
-					tinyMCE.get('content').setContent(htmlThis);
-					var bodyTMCE = tinyMCE.get('content').dom.select('body');
+					tinyMCE.execCommand('mceAddControl',false,'textArea');
+					tinyMCE.execCommand('mceFocus',false,'textArea');
+					tinyMCE.get('textArea').setContent(htmlThis);
+					var bodyTMCE = tinyMCE.get('textArea').dom.select('body');
 					jQuery(bodyTMCE).css({width:(pixgridder_content_width*(dataCol/dataCols))}); //to display a particular width of the editor according with the width of the column you're editing
-					jQuery('#wp-content-wrap').removeClass('html-active').addClass('tmce-active');
+					jQuery('#wp-textArea-wrap').removeClass('html-active').addClass('tmce-active');
 				} else {
-					jQuery('textarea#content').val(htmlThis);
+					jQuery('textarea#textArea').val(htmlThis);
 				}
 				jQuery(window).bind('resize',function() {
 					if ( typeof tinyMCE === 'undefined' ) {
 						var txtH = parseFloat(jQuery('#textarea_builder').height()),
-							qtH = parseFloat(jQuery('#qt_content_toolbar').outerHeight()),
-							toolH = parseFloat(jQuery('#wp-content-editor-tools').outerHeight());
-						jQuery('#content').height(txtH-(qtH+toolH+40));
+							qtH = parseFloat(jQuery('#qt_textArea_toolbar').outerHeight()),
+							toolH = parseFloat(jQuery('#wp-textArea-editor-tools').outerHeight());
+						jQuery('#textArea').height(txtH-(qtH+toolH+40));
 					}
 				});
 				var set = setTimeout(function(){ jQuery(window).triggerHandler('resize'); },100);
@@ -281,13 +277,13 @@ function pageBuilder(){
 				'': function() {
 					var cont;
 					if ( typeof tinyMCE!=='undefined' ) {
-						if ( jQuery('#wp-content-wrap').hasClass('html-active') && tinyMCE.activeEditor.getParam('wpautop', true) ) {
-							cont = switchEditors.wpautop(jQuery('textarea#content').val());
+						if ( jQuery('#wp-textArea-wrap').hasClass('html-active') && tinyMCE.activeEditor.getParam('wpautop', true) ) {
+							cont = switchEditors.wpautop(jQuery('textarea#textArea').val());
 						} else {
 							cont = tinyMCE.activeEditor.getContent();
 						}
 					} else {
-						cont = jQuery('textarea#content').val();
+						cont = jQuery('textarea#textArea').val();
 					}
 					/*cont = cont.replace(/<span(.+?)font-size: 1rem(.+?)>(.+?)<\/span>/g,'$3');
 					cont = cont.replace(/<(.+?) (.+?)font-size: 1rem(.+?)>(.+?)<\//g,'<$1>$4</');
@@ -309,7 +305,6 @@ function pageBuilder(){
 				jQuery('body').removeClass('overflow_hidden');
 				jQuery('#pix-modal-overlay').remove();
 				jQuery(window).unbind('resize');
-				cloneEdit.before(edit).remove();
 			}
 		});
 		jQuery(window).bind('resize',function() {
@@ -334,7 +329,7 @@ function pageBuilder(){
 		jQuery('input[data-use="class"]',div).val(classT);
 
 		jQuery(div).dialog({
-			height: 300,
+			height: 400,
 			width: 400,
 			modal: false,
 			dialogClass: 'wp-dialog pix-dialog pix-page-builder-id',
@@ -512,7 +507,6 @@ function setBuilderContent() {
 	var theDom,
 		theBody,
 		set, set2;
-
 
 	if ( typeof tinyMCE !== "undefined" && typeof tinyMCE.get('content') !== "undefined" ) {
 		theDom = tinyMCE.get('content').dom.select('body');

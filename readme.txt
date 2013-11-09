@@ -70,6 +70,9 @@ Take a look to the [2nd screenshot](http://s.wordpress.org/plugins/pixgridder/sc
 
 == Changelog ==
 
+= 1.2.0 =
+* 2013.11.09 - Fixed an issue with embedded videos
+				Fixed an issue with cloned tinyMCE (that restores back the original way edited on 1.1.0)
 = 1.1.0 =
 * 2013.09.24 - Changed how the tinyMCE is included in dialog boxes
 = 1.0.1 =

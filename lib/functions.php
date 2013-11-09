@@ -3,11 +3,11 @@
 class PixGridder{
 
 	/**
-	 * @since   1.1.0
+	 * @since   1.2.0
 	 *
 	 * @var     string
 	 */
-	protected $version = '1.1.0';
+	protected $version = '1.2.0';
 
 	/**
 	 * @since    1.0.0
@@ -49,6 +49,7 @@ class PixGridder{
 		add_action( 'wp_enqueue_scripts', array( &$this, 'front_styles' ) );
 		add_filter( 'body_class', array( &$this, 'body_class' ) );
 		add_filter( 'the_content', array( &$this, 'filter_content' ), 10 );
+		add_filter( 'the_content', array( &$this, 'filter_content' ), 100 );
     }
 
 	/**
@@ -380,7 +381,7 @@ class PixGridder{
 	/**
 	 * Save via AJAX the height of the preview wrap.
 	 *
-	 * @since    1.0.0
+	 * @since    1.2.0
 	 */
 	public function filter_content($content) {
 
@@ -401,6 +402,25 @@ class PixGridder{
         $column_close = "</div><!--.column[data-col=\"$1\"]-->";
 
 	    if ( $display == true ) {
+
+			require_once( ABSPATH . WPINC . '/class-oembed.php' );
+			$oembed = _wp_oembed_get_object();
+			$providers = $oembed->providers;
+
+			foreach ($providers as $key => $value) {
+				if(substr($key,0,1) == '#') {
+					$content = preg_replace_callback(
+				        "$key",
+				        function ($matches) {
+				        	$var = preg_replace('/<p>/', '', $matches[0]);
+				        	$var = preg_replace('/<\/p>/', '', $var);
+						    global $wp_embed;
+				            return $wp_embed->autoembed($var);
+				        },
+				        $content
+				    );
+				}
+			}
 
 			$content = preg_replace('/data-id\[(.+?)\]/', 'id="$1"', $content);
 			$content = preg_replace('/data-class\[(.+?)\]/', 'class="$1"', $content);
