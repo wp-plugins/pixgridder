@@ -233,7 +233,7 @@ function pageBuilder(){
 			dialogClass: 'wp-dialog pix-dialog pix-page-builder',
 			position: 'center',
 			title: 'Add some content',
-			zIndex: 50,
+			zIndex: 100,
 			open: function(){
 				pix_builder_modal = 'open';
 				if ( typeof tinyMCE!=='undefined' ) {
@@ -251,7 +251,7 @@ function pageBuilder(){
 					right: 0,
 					top: 0,
 					width: '100%',
-					zIndex: 49
+					zIndex: 99
 				});
 				if ( typeof tinyMCE!=='undefined' ) {
 					tinyMCE.execCommand('mceAddControl',false,'textArea');
@@ -335,7 +335,7 @@ function pageBuilder(){
 			dialogClass: 'wp-dialog pix-dialog pix-page-builder-id',
 			position: 'center',
 			title: 'Add some values',
-			zIndex: 49,
+			zIndex: 99,
 			open: function(){
 				jQuery(this).closest('.ui-dialog').find('.ui-button').eq(0).addClass('ui-dialog-titlebar-edit');
 				jQuery('body').addClass('overflow_hidden').append('<div id="pix-modal-overlay" />');
@@ -349,7 +349,7 @@ function pageBuilder(){
 					right: 0,
 					top: 0,
 					width: '100%',
-					zIndex: 49
+					zIndex: 99
 				});
 			},
 			buttons: {
@@ -462,7 +462,7 @@ function pageBuilder(){
 			dialogClass: 'wp-dialog pix-dialog pix-page-builder-id',
 			position: 'center',
 			title: 'Add some values',
-			zIndex: 49,
+			zIndex: 99,
 			open: function(){
 				jQuery(this).closest('.ui-dialog').find('.ui-button').eq(0).addClass('ui-dialog-titlebar-edit');
 				jQuery('body').addClass('overflow_hidden').append('<div id="pix-modal-overlay" />');
@@ -476,7 +476,7 @@ function pageBuilder(){
 					right: 0,
 					top: 0,
 					width: '100%',
-					zIndex: 49
+					zIndex: 99
 				});
 			},
 			buttons: {

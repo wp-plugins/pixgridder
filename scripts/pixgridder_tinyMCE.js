@@ -27,15 +27,15 @@ function pixgridderTinyMCEinit() {
 				if (pix_builder_modal=='open') {
 
 					setTimeout(function(){
-						var h = (jQuery('#textarea_builder').height() - (jQuery('#textArea_toolbargroup').height() + jQuery('#wp-textArea-editor-tools').height())),
-							h2 = (jQuery('#textarea_builder').height() - (jQuery('#qt_textArea_toolbar').height() + jQuery('#wp-textArea-editor-tools').height()));
+						var h = (jQuery('#textarea_builder').height() - (jQuery('#textArea_toolbargroup').height() + jQuery('#wp-textArea-editor-tools .wp-editor-tabs').height())),
+							h2 = (jQuery('#textarea_builder').height() - (jQuery('#qt_textArea_toolbar').height() + jQuery('#wp-textArea-editor-tools .wp-editor-tabs').height()));
 
 						ed.theme.resizeTo('auto', (h-42));
 						jQuery('#wp-textArea-editor-container textarea').css({height:(h2-20)});
 
 						jQuery(window).bind('resize',function(){
-							h = (jQuery('#textarea_builder').height() - (jQuery('#textArea_toolbargroup').height() + jQuery('#wp-textArea-editor-tools').height()));
-							h2 = (jQuery('#textarea_builder').height() - (jQuery('#qt_textArea_toolbar').height() + jQuery('#wp-textArea-editor-tools').height()));
+							h = (jQuery('#textarea_builder').height() - (jQuery('#textArea_toolbargroup').height() + jQuery('#wp-textArea-editor-tools .wp-editor-tabs').height()));
+							h2 = (jQuery('#textarea_builder').height() - (jQuery('#qt_textArea_toolbar').height() + jQuery('#wp-textArea-editor-tools .wp-editor-tabs').height()));
 
 							ed.theme.resizeTo('auto', (h-42));
 							jQuery('#wp-textArea-editor-container textarea').css({height:(h2-20)});

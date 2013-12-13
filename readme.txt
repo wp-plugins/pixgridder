@@ -3,7 +3,7 @@ Contributors: manuelmasia
 Donate link: http://www.pixedelic.com/plugins/pixgridder
 Tags: grid, layout, drag & drop, responsive, columns, page builder, grid builder, effects, page builder, page composer
 Requires at least: 3.5.0
-Tested up to: 3.7.1
+Tested up to: 3.8.0
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -70,6 +70,8 @@ Take a look to the [2nd screenshot](http://s.wordpress.org/plugins/pixgridder/sc
 
 == Changelog ==
 
+= 1.3.0 =
+* 2013.12.13 - Fixed WP 3.8 compatibility issues
 = 1.2.0 =
 * 2013.11.09 - Fixed an issue with embedded videos
 				Fixed an issue with cloned tinyMCE (that restores back the original way edited on 1.1.0)
