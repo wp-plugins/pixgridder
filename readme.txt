@@ -70,6 +70,8 @@ Take a look to the [2nd screenshot](http://s.wordpress.org/plugins/pixgridder/sc
 
 == Changelog ==
 
+= 1.3.1 =
+* 2013.12.20 - Fixed CSS issues
 = 1.3.0 =
 * 2013.12.13 - Fixed WP 3.8 compatibility issues
 = 1.2.0 =

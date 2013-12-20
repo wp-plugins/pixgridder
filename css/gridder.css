@@ -64,6 +64,10 @@ a, button, input {
 	top: 0;
 	width: 100%;
 }
+.wp-dialog.pix-dialog .ui-dialog-titlebar-close:before {
+	content: ''!important;
+	display: none!important;
+}
 .wp-dialog.pix-dialog .ui-dialog-titlebar-close:hover {
 	font-size: 17px!important;
 	-webkit-transform: rotate(90deg);
@@ -594,7 +598,7 @@ a, button, input {
 	display: none;
 }
 .wp-dialog.pix-dialog.pix-page-builder {
-	z-index: 50!important;
+	z-index: 100!important;
 }
 
 #pix_loader_iframe {

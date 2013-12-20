@@ -3,11 +3,11 @@
 class PixGridder{
 
 	/**
-	 * @since   1.3.0
+	 * @since   1.3.1
 	 *
 	 * @var     string
 	 */
-	protected $version = '1.3.0';
+	protected $version = '1.3.1';
 
 	/**
 	 * @since    1.0.0
