@@ -70,6 +70,10 @@ Take a look to the [2nd screenshot](http://s.wordpress.org/plugins/pixgridder/sc
 
 == Changelog ==
 
+= 2.0.0 =
+* 2014.04.18 - Fixed issues due to tinyMCE 4.0
+				Fixed 'preg_replace_callback' anonymous functions for PHP < 5.3.0 compatibility
+				Other WP 3.9.0 compatibility issues
 = 1.3.1 =
 * 2013.12.20 - Fixed CSS issues
 = 1.3.0 =
