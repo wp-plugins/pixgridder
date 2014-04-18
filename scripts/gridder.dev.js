@@ -211,7 +211,7 @@ function pageBuilder(){
 	jQuery(document).off('click',"#pix_builder_canvas .pix_column_edit");
 	jQuery(document).on('click',"#pix_builder_canvas .pix_column_edit",function(){
 		if ( typeof tinyMCE!=='undefined' ) {
-			tinyMCE.execCommand('mceRemoveControl',false,'textArea');
+			tinyMCE.execCommand('mceRemoveEditor',false,'textArea');
 		}
 		var t = jQuery(this).parents('.pix_builder_column').eq(0),
 			textA = jQuery('textarea',t),
@@ -235,7 +235,7 @@ function pageBuilder(){
 			title: 'Add some content',
 			zIndex: 100,
 			open: function(){
-				pix_builder_modal = 'open';
+				jQuery(window).trigger('pix_builder_modal');
 				if ( typeof tinyMCE!=='undefined' ) {
 					pixgridderTinyMCEinit();
 				}
@@ -254,7 +254,7 @@ function pageBuilder(){
 					zIndex: 99
 				});
 				if ( typeof tinyMCE!=='undefined' ) {
-					tinyMCE.execCommand('mceAddControl',false,'textArea');
+					tinyMCE.execCommand('mceAddEditor',false,'textArea');
 					tinyMCE.execCommand('mceFocus',false,'textArea');
 					tinyMCE.get('textArea').setContent(htmlThis);
 					var bodyTMCE = tinyMCE.get('textArea').dom.select('body');
@@ -301,7 +301,6 @@ function pageBuilder(){
 				}
 			},
 			close: function(){
-				pix_builder_modal = 'close';
 				jQuery('body').removeClass('overflow_hidden');
 				jQuery('#pix-modal-overlay').remove();
 				jQuery(window).unbind('resize');
@@ -836,12 +835,11 @@ function columnWidth(){
 }
 
 
-
-jQuery(function(){
+var pixGridderBuilderInit = function(){
 	getSelValue();
 	var set = setTimeout( function(){ jQuery('.pix_section_template').change(); },10);
 
-	if ( pixgridder_display == true ) {
+	if ( pixgridder_display === true ) {
 		pageBuilder();
 		sortSections();
 		sortColumns();
@@ -852,6 +850,7 @@ jQuery(function(){
 		setBuilderContent();
 		columnWidth();
 	}
+
 	jQuery('#pix_builder_preview').resizable({ 
 		handles: 'se',
 		create: function( event, ui ) {
@@ -868,4 +867,4 @@ jQuery(function(){
 			jQuery.post(ajaxurl, data);
 		}
 	});
-});
+};
