@@ -3,11 +3,11 @@
 class PixGridder{
 
 	/**
-	 * @since   1.3.1
+	 * @since   2.0.0
 	 *
 	 * @var     string
 	 */
-	protected $version = '1.3.1';
+	protected $version = '2.0.0';
 
 	/**
 	 * @since    1.0.0
@@ -50,7 +50,8 @@ class PixGridder{
 		add_filter( 'body_class', array( &$this, 'body_class' ) );
 		add_filter( 'the_content', array( &$this, 'filter_content' ), 10 );
 		add_filter( 'the_content', array( &$this, 'filter_content' ), 100 );
-    }
+ 		add_filter( 'mce_css', array( &$this, 'add_tinymce_css' ) );
+   }
 
 	/**
 	 * Return an instance of this class.
@@ -381,7 +382,7 @@ class PixGridder{
 	/**
 	 * Save via AJAX the height of the preview wrap.
 	 *
-	 * @since    1.2.0
+	 * @since    2.0.0
 	 */
 	public function filter_content($content) {
 
@@ -407,16 +408,20 @@ class PixGridder{
 			$oembed = _wp_oembed_get_object();
 			$providers = $oembed->providers;
 
+			if ( !function_exists('pixgridder_match_oembed') ) {
+				function pixgridder_match_oembed($matches) {
+		        	$var = preg_replace('/<p>/', '', $matches[0]);
+		        	$var = preg_replace('/<\/p>/', '', $var);
+				    global $wp_embed;
+		            return $wp_embed->autoembed($var);
+		        }
+		    }
+
 			foreach ($providers as $key => $value) {
 				if(substr($key,0,1) == '#') {
 					$content = preg_replace_callback(
 				        "$key",
-				        function ($matches) {
-				        	$var = preg_replace('/<p>/', '', $matches[0]);
-				        	$var = preg_replace('/<\/p>/', '', $var);
-						    global $wp_embed;
-				            return $wp_embed->autoembed($var);
-				        },
+				        'pixgridder_match_oembed',
 				        $content
 				    );
 				}
@@ -540,5 +545,15 @@ class PixGridder{
 			</script>
 		<?php }
 	}
+
+	/**
+	 * Add custom stylesheet to tinyMCE.
+	 *
+	 * @since    2.0.0
+	 */
+	public static function add_tinymce_css($wp) {
+        $wp .= ',' . PIXGRIDDER_URL . 'css/tinymce_frame.css';
+        return $wp;
+    }
 
 }
