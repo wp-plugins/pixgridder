@@ -2,7 +2,7 @@
 Contributors: manuelmasia
 Donate link: http://www.pixedelic.com/plugins/pixgridder
 Tags: grid, layout, drag & drop, responsive, columns, page builder, grid builder, effects, page builder, page composer
-Requires at least: 3.5.0
+Requires at least: 3.9.0
 Tested up to: 3.9.0
 Stable tag: trunk
 License: GPLv2 or later
@@ -70,6 +70,8 @@ Take a look to the [2nd screenshot](http://s.wordpress.org/plugins/pixgridder/sc
 
 == Changelog ==
 
+= 2.0.1 =
+* 2014.05.05 - Added filters for rows and columns tag
 = 2.0.0 =
 * 2014.04.18 - Fixed issues due to tinyMCE 4.0
 				Fixed 'preg_replace_callback' anonymous functions for PHP < 5.3.0 compatibility

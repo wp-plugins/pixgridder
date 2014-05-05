@@ -382,7 +382,7 @@ class PixGridder{
 	/**
 	 * Save via AJAX the height of the preview wrap.
 	 *
-	 * @since    2.0.0
+	 * @since    2.0.1
 	 */
 	public function filter_content($content) {
 
@@ -397,10 +397,10 @@ class PixGridder{
 	        $display = false;        	
         }
 
-        $row_open = "<div class=\"row\" data-cols=\"$1\">";
-        $row_close = "</div><!--.row[data-cols=\"$1\"]-->";
-        $column_open = "<div class=\"column\" data-col=\"$1\">";
-        $column_close = "</div><!--.column[data-col=\"$1\"]-->";
+        $row_open = apply_filters('pixgridder_row_open', "<div class=\"row\" data-cols=\"$1\">");
+        $row_close = apply_filters('pixgridder_row_close', "</div><!--.row[data-cols=\"$1\"]-->");
+        $column_open = apply_filters('pixgridder_column_open', "<div class=\"column\" data-col=\"$1\">");
+        $column_close = apply_filters('pixgridder_column_close', "</div><!--.column[data-col=\"$1\"]-->");
 
 	    if ( $display == true ) {
 
