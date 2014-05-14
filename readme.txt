@@ -12,7 +12,7 @@ A simple page grid composer that splits your pages into ordered grids, a builder
 
 == Description ==
 
-Here is the demo page: [PixGridder](http://www.pixedelic.com/plugins/pixgridder "PixGridder")
+Here is the demo page: [PixGridder](http://www.pixedelic.com/plugins/pixgridder "PixGridder") where a link to Pro version is available (pixgridder-pro)
 
 I prefer to define this plugin as a **"grid builder"** instead of a page builder, because a page builder is commonly intended as a tool that allows to create sections and, usually, comes with shortcodes such as tabs, accordions, particular sections, galleries etc... And, in many cases, all these shortcodes are not compatible with other similar plugins you could prefer to use.
 
