@@ -70,6 +70,8 @@ Take a look to the [2nd screenshot](http://s.wordpress.org/plugins/pixgridder/sc
 
 == Changelog ==
 
+= 2.0.3 =
+* 2014.06.06 - 	Fixed <!--nextpage--> position issue
 = 2.0.2 =
 * 2014.06.06 - 	Fixed <!--nextpage--> position issue
 				Fixed infinite loading for preview tab on not saved pages/posts

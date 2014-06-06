@@ -3,7 +3,7 @@
 Plugin Name: PixGridder
 Plugin URI: http://www.pixedelic.com/plugins/pixgridder
 Description: A simple page composer that splits your pages/posts into grid with columns and rows
-Version: 2.0.2
+Version: 2.0.3
 Author: Manuel Masia | Pixedelic.com
 Author URI: http://www.pixedelic.com
 License: GPL2
