@@ -3,11 +3,11 @@
 class PixGridder{
 
 	/**
-	 * @since   2.0.0
+	 * @since   2.0.2
 	 *
 	 * @var     string
 	 */
-	protected $version = '2.0.0';
+	protected $version = '2.0.2';
 
 	/**
 	 * @since    1.0.0
@@ -31,9 +31,10 @@ class PixGridder{
 	protected static $instance = null;
 
 	/**
-	 * @since     1.0.1
+	 * @since     2.0.2
 	 */
 	public function __construct() {
+		add_action( 'loop_start', array( &$this, 'move_nextpage' ) );
 		add_action( 'init', array( &$this, 'load_plugin_textdomain' ) );
 		add_action( 'admin_enqueue_scripts', array( &$this, 'admin_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( &$this, 'admin_scripts' ) );
@@ -480,6 +481,28 @@ class PixGridder{
 		}
 
 		return $content;
+	}
+
+	/**
+	 * Fix for <!--nextpage--> position
+	 *
+	 * @since    2.0.2
+	 */
+	function move_nextpage($post){
+
+		global $post, $pixgridder_move_nextpage;
+
+		if ( $pixgridder_move_nextpage != true ) {
+			$content = $post->post_content;
+
+			$content = preg_replace('/<!--nextpage-->(.+?)<!--\/pixgridder:row(.+?)-->/s', "$1<!--/pixgridder:row1[$2]-->\n\n<!--nextpage-->\n\n", $content, 1);
+			$post->post_content = $content;
+
+			$pixgridder_move_nextpage = true;
+		}
+
+		return $post;
+
 	}
 
 	/**

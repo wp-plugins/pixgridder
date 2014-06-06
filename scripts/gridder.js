@@ -169,7 +169,7 @@ function pageBuilder(){
 		var wrap = jQuery('#wp-content-wrap');
 		wrap.removeClass('builder-active').addClass('preview-active');
 		localStorage.setItem('pix_editor_tab', 'pix_preview');
-		if ( jQuery('#auto_draft').val() == '1' && notSaved ) {
+		if ( jQuery('#auto_draft').val() == '1'/* && notSaved*/ ) {
 			//autosaveDelayPreview = true;
 			autosave();
 			return false;

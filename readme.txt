@@ -3,7 +3,7 @@ Contributors: manuelmasia
 Donate link: http://www.pixedelic.com/plugins/pixgridder
 Tags: grid, layout, drag & drop, responsive, columns, page builder, grid builder, effects, page builder, page composer
 Requires at least: 3.9.0
-Tested up to: 3.9.0
+Tested up to: 3.9.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -70,25 +70,28 @@ Take a look to the [2nd screenshot](http://s.wordpress.org/plugins/pixgridder/sc
 
 == Changelog ==
 
+= 2.0.2 =
+* 2014.06.06 - 	Fixed <!--nextpage--> position issue
+				Fixed infinite loading for preview tab on not saved pages/posts
 = 2.0.1 =
-* 2014.05.05 - Added filters for rows and columns tag
+* 2014.05.05 - 	Added filters for rows and columns tag
 = 2.0.0 =
-* 2014.04.18 - Fixed issues due to tinyMCE 4.0
+* 2014.04.18 - 	Fixed issues due to tinyMCE 4.0
 				Fixed 'preg_replace_callback' anonymous functions for PHP < 5.3.0 compatibility
 				Other WP 3.9.0 compatibility issues
 = 1.3.1 =
-* 2013.12.20 - Fixed CSS issues
+* 2013.12.20 - 	Fixed CSS issues
 = 1.3.0 =
-* 2013.12.13 - Fixed WP 3.8 compatibility issues
+* 2013.12.13 - 	Fixed WP 3.8 compatibility issues
 = 1.2.0 =
-* 2013.11.09 - Fixed an issue with embedded videos
+* 2013.11.09 - 	Fixed an issue with embedded videos
 				Fixed an issue with cloned tinyMCE (that restores back the original way edited on 1.1.0)
 = 1.1.0 =
-* 2013.09.24 - Changed how the tinyMCE is included in dialog boxes
+* 2013.09.24 - 	Changed how the tinyMCE is included in dialog boxes
 = 1.0.1 =
-* 2013.09.21 - Changed priority to the filter for the_content()
+* 2013.09.21 - 	Changed priority to the filter for the_content()
 = 1.0.0 =
-* 2013.08.17 - First release
+* 2013.08.17 - 	First release
 
 == Upgrade Notice ==
 
