@@ -495,7 +495,7 @@ class PixGridder{
 		if ( $pixgridder_move_nextpage != true ) {
 			$content = $post->post_content;
 
-			$content = preg_replace('/<!--nextpage-->(.+?)<!--\/pixgridder:row(.+?)-->/s', "$1<!--/pixgridder:row1[$2]-->\n\n<!--nextpage-->\n\n", $content, 1);
+			$content = preg_replace('/<!--nextpage-->(.+?)<!--\/pixgridder:row(.+?)-->/s', "$1<!--/pixgridder:row1[$2]-->\n\n<!--nextpage-->\n\n", $content);
 			$post->post_content = $content;
 
 			$pixgridder_move_nextpage = true;
