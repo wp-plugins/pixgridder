@@ -169,7 +169,7 @@ function pageBuilder(){
 		var wrap = jQuery('#wp-content-wrap');
 		wrap.removeClass('builder-active').addClass('preview-active');
 		localStorage.setItem('pix_editor_tab', 'pix_preview');
-		if ( jQuery('#auto_draft').val() == '1' && notSaved ) {
+		if ( jQuery('#auto_draft').val() == '1'/* && notSaved*/ ) {
 			//autosaveDelayPreview = true;
 			autosave();
 			return false;
@@ -507,7 +507,7 @@ function setBuilderContent() {
 		theBody,
 		set, set2;
 
-	if ( typeof tinyMCE !== "undefined" && typeof tinyMCE.get('content') !== "undefined" ) {
+	if ( typeof tinyMCE !== "undefined" && typeof tinyMCE.get('content') !== "undefined" && tinyMCE.get('content') !== null ) {
 		theDom = tinyMCE.get('content').dom.select('body');
 		theBody = jQuery(theDom).html();
 	} else {

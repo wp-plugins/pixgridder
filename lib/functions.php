@@ -3,11 +3,11 @@
 class PixGridder{
 
 	/**
-	 * @since   2.0.2
+	 * @since   2.0.4
 	 *
 	 * @var     string
 	 */
-	protected $version = '2.0.2';
+	protected $version = '2.0.4';
 
 	/**
 	 * @since    1.0.0
@@ -151,6 +151,7 @@ class PixGridder{
 			function tinymce_settings($settings) {
 				//$settings['extended_valid_elements'] = "span[!class]";
 			    $settings['theme_advanced_resizing'] = false;
+			    $settings['wp_autoresize_on'] = false;
 			    return $settings;
 			}
 			add_filter('tiny_mce_before_init','tinymce_settings');
