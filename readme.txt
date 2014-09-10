@@ -70,6 +70,8 @@ Take a look to the [2nd screenshot](http://s.wordpress.org/plugins/pixgridder/sc
 
 == Changelog ==
 
+= 2.0.5 =
+* 2014.09.10 - 	Donate page
 = 2.0.4 =
 * 2014.09.04 - 	Wordpress 4.0 intelligent resizing editor issue
 = 2.0.3 =

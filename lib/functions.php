@@ -3,11 +3,11 @@
 class PixGridder{
 
 	/**
-	 * @since   2.0.4
+	 * @since   2.0.5
 	 *
 	 * @var     string
 	 */
-	protected $version = '2.0.4';
+	protected $version = '2.0.5';
 
 	/**
 	 * @since    1.0.0
@@ -31,17 +31,19 @@ class PixGridder{
 	protected static $instance = null;
 
 	/**
-	 * @since     2.0.2
+	 * @since     2.0.5
 	 */
 	public function __construct() {
 		add_action( 'loop_start', array( &$this, 'move_nextpage' ) );
 		add_action( 'init', array( &$this, 'load_plugin_textdomain' ) );
 		add_action( 'admin_enqueue_scripts', array( &$this, 'admin_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( &$this, 'admin_scripts' ) );
+		add_action( 'admin_menu', array( &$this, 'add_menu' ) );
 		add_action( 'add_meta_boxes', array( &$this, 'add_meta' ) );
 		add_action( 'save_post', array( &$this, 'content_save' ) );
 		add_action( 'save_post', array( &$this, 'disable_save' ) );
 		add_action( 'wp_ajax_pixgridder_height_preview', array( &$this, 'save_height_preview' ) );
+		add_action( 'wp_ajax_pixgridder_data_save', array( &$this, 'save_via_ajax' ) );
 		add_action( 'admin_head', array( &$this, 'js_vars' ) );
 		add_action( 'admin_head', array( &$this, 'add_tinyMCE' ) );
 		add_action( 'admin_head', array( &$this, 'default_editor' ) );
@@ -80,6 +82,25 @@ class PixGridder{
 	 */
 	public static function activate( $network_wide ) {
 		self::add_general();
+	}
+
+	/**
+	 * Save the options on the admin panel via AJAX.
+	 *
+	 * @since    2.0.5
+	 */
+	public function save_via_ajax() {
+		global $options;
+		check_ajax_referer('pixgridder_data', 'pixgridder_security');
+
+		$data = $_POST;
+		unset($data['pixgridder_security'], $data['action']);
+
+		foreach ($_REQUEST as $key => $value) {
+			if( isset($_REQUEST[$key]) ) {
+				update_option($key, $value);
+			}
+		}		
 	}
 
 	/**
@@ -185,6 +206,9 @@ class PixGridder{
 			wp_enqueue_style( $this->plugin_slug .'-open-sans', PIXGRIDDER_URL.'css/open_sans.css', array(), $this->version );
 			wp_enqueue_style( $this->plugin_slug, PIXGRIDDER_URL.'css/gridder.css', array(), $this->version );
 		}
+		if ('options-general.php' == $pagenow && isset($_GET['page']) && $_GET['page']=='pixgridder_admin') {
+			wp_enqueue_style( $this->plugin_slug .'-fontello', PIXGRIDDER_URL.'css/admin.css', array(), $this->version );
+		}
 	}
 
 	/**
@@ -199,6 +223,9 @@ class PixGridder{
 			wp_enqueue_script( $this->plugin_slug . '-ui-touch-punch', PIXGRIDDER_URL.'scripts/jquery.ui.touch-punch.min.js', array('jquery-ui-mouse'), '0.2.2', false );
 			wp_enqueue_script( $this->plugin_slug . '-livequery', PIXGRIDDER_URL.'scripts/jquery.livequery.js', array('jquery'), '1.1.1', false );
 			wp_enqueue_script( $this->plugin_slug, PIXGRIDDER_URL.'scripts/gridder.js', array($this->plugin_slug.'-modernizr','jquery','jquery-ui-core',$this->plugin_slug.'-ui-touch-punch','jquery-ui-sortable',$this->plugin_slug.'-livequery','jquery-ui-resizable','jquery-ui-dialog') );
+		}
+		if ('options-general.php' == $pagenow && isset($_GET['page']) && $_GET['page']=='pixgridder_admin') {
+			wp_enqueue_script( $this->plugin_slug . '-admin', PIXGRIDDER_URL.'scripts/admin.js', array('jquery'), $this->version );
 		}
 	}
 
@@ -286,6 +313,10 @@ class PixGridder{
 	        add_meta_box( 'pixgridder_builder', 'PixGridder', 'pixgridder_builder', 'page', 'normal', 'low' );
 	        add_meta_box( 'pixgridder_content', 'PixGridder Content', 'pixgridder_content', 'page', 'normal' );
 		}
+
+		if ( get_option('pixgridder_hide_donate')!='true' )
+	        add_meta_box( 'pixgridder_donate', __( 'Thank you for using PixGridder', 'pixgridder' ), array( $this, 'meta_donate_output' ), 'page', 'side');
+	    
 		add_meta_box( 'pixgridder_disable', 'PixGridder options', 'pixgridder_disable', 'page', 'normal', 'high' );
 
 		function pixgridder_content( $post, $display ) {
@@ -493,6 +524,9 @@ class PixGridder{
 
 		global $post, $pixgridder_move_nextpage;
 
+		if ( !$post )
+			return;
+
 		if ( $pixgridder_move_nextpage != true ) {
 			$content = $post->post_content;
 
@@ -509,16 +543,19 @@ class PixGridder{
 	/**
 	 * Options.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.5
 	 */
 	public static function register_options() {
 	    global $options;
 
 		$options = array (
 			array( "id" => "pixgridder_height_preview",
-				"std" => "550")
+				"std" => "550"),
+			array( "id" => "pixgridder_hide_donate",
+				"std" => "0")
 		);
 		
+		self::pixgridder_admin( array( &$this, 'register_options' ) );
 		return $options;
 	}
 
@@ -580,4 +617,35 @@ class PixGridder{
         return $wp;
     }
 
+	/**
+	 * Adds descriptive page.
+	 *
+	 * @since    2.0.5
+	 */
+	public function add_menu() {
+		if (function_exists('add_options_page') && get_option('pixgridder_hide_donate')!='true') {
+			add_options_page($this->plugin_name, $this->plugin_name, 'activate_plugins', 'pixgridder_admin', array( $this, 'register_options' ));
+		}
+	}
+
+	/**
+	 * Display the menu for admin panel.
+	 *
+	 * @since    2.0.5
+	 */
+	public static function pixgridder_admin() {
+		require_once( PIXGRIDDER_PATH . 'lib/admin.php' );
+	}
+
+	/**
+	 * Donate metabox content.
+	 *
+	 * @since    2.0.5
+	 */
+	public function meta_donate_output( $post ) {
+
+		printf( __('<p>Remove this box and consider, please, to support the plugin author somehow.<br><a href="%1$s">Just visit this page</a></p>', 'hilite'),
+			esc_url( admin_url( 'options-general.php?page=pixgridder_admin' ) )
+		);
+	}
 }
