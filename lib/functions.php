@@ -3,11 +3,11 @@
 class PixGridder{
 
 	/**
-	 * @since   2.0.5
+	 * @since   2.0.4
 	 *
 	 * @var     string
 	 */
-	protected $version = '2.0.5';
+	protected $version = '2.0.4';
 
 	/**
 	 * @since    1.0.0
@@ -143,7 +143,7 @@ class PixGridder{
 	/**
 	 * Load tinyMCE custom functions.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.6
 	 */
 	public function add_tinyMCE() {
 		global $post, $pagenow;
@@ -170,9 +170,11 @@ class PixGridder{
 			}		
 
 			function tinymce_settings($settings) {
-				//$settings['extended_valid_elements'] = "span[!class]";
-			    $settings['theme_advanced_resizing'] = false;
-			    $settings['wp_autoresize_on'] = false;
+				if ( $display == true ) {
+					//$settings['extended_valid_elements'] = "span[!class]";
+				    $settings['theme_advanced_resizing'] = false;
+				    $settings['wp_autoresize_on'] = false;
+				}
 			    return $settings;
 			}
 			add_filter('tiny_mce_before_init','tinymce_settings');
@@ -610,10 +612,20 @@ class PixGridder{
 	/**
 	 * Add custom stylesheet to tinyMCE.
 	 *
-	 * @since    2.0.0
+	 * @since    2.0.6
 	 */
 	public static function add_tinymce_css($wp) {
-        $wp .= ',' . PIXGRIDDER_URL . 'css/tinymce_frame.css';
+		global $post, $pagenow;
+
+		if ( $pagenow == 'post.php' || $pagenow == 'post-new.php' ) {
+			$typenow = get_post_type();
+			$editor = get_post_meta( $post->ID, 'pixBuilderDisable', true );
+
+		    if ($typenow == 'page' && $editor != 'on' ) {
+		        $wp .= ',' . PIXGRIDDER_URL . 'css/tinymce_frame.css';
+	        }
+
+	    }
         return $wp;
     }
 

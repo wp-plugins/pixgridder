@@ -231,9 +231,9 @@ function pageBuilder(){
 			width: '80%',
 			modal: false,
 			dialogClass: 'wp-dialog pix-dialog pix-page-builder',
-			position: 'center',
+			position: { my: "center", at: "center", of: window },
 			title: 'Add some content',
-			zIndex: 100,
+			zIndex: 10000,
 			open: function(){
 				jQuery(window).trigger('pix_builder_modal');
 				if ( typeof tinyMCE!=='undefined' ) {
@@ -307,8 +307,8 @@ function pageBuilder(){
 			}
 		});
 		jQuery(window).bind('resize',function() {
-			h = jQuery(window).height(),
-			jQuery(div).dialog('option',{'height':(h*0.8),'position':'center'});
+			h = jQuery(window).height();
+			jQuery(div).dialog('option',{'height':(h*0.8),'position':{ my: "center", at: "center", of: window }});
 		}).triggerHandler('resize');
 	});
 
@@ -332,7 +332,7 @@ function pageBuilder(){
 			width: 400,
 			modal: false,
 			dialogClass: 'wp-dialog pix-dialog pix-page-builder-id',
-			position: 'center',
+			position: { my: "center", at: "center", of: window },
 			title: 'Add some values',
 			zIndex: 99,
 			open: function(){
@@ -367,8 +367,7 @@ function pageBuilder(){
 			}
 		});
 		jQuery(window).bind('resize',function() {
-			h = jQuery(window).height(),
-			jQuery(div).dialog('option','position','center');
+			jQuery(div).dialog('option',{'position':{ my: "center", at: "center", of: window }});
 		}).triggerHandler('resize');
 	});
 
@@ -459,7 +458,7 @@ function pageBuilder(){
 			width: 400,
 			modal: false,
 			dialogClass: 'wp-dialog pix-dialog pix-page-builder-id',
-			position: 'center',
+			position: { my: "center", at: "center", of: window },
 			title: 'Add some values',
 			zIndex: 99,
 			open: function(){
@@ -494,8 +493,7 @@ function pageBuilder(){
 			}
 		});
 		jQuery(window).bind('resize',function() {
-			h = jQuery(window).height(),
-			jQuery(div).dialog('option','position','center');
+			jQuery(div).dialog('option',{'position':{ my: "center", at: "center", of: window }});
 		}).triggerHandler('resize');
 	});
 }
